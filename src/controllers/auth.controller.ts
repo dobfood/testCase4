@@ -11,12 +11,12 @@ class AuthController {
                 if (err) {
                     return res.json({message: err.message})
 
-                } else {
-                    if (decoded.admin === true) {
-                        res.redirect('/auth/admin')
-                    } else {
-                        res.redirect('/auth/user')
-                    }
+                // } else {
+                //     if (decoded.admin === true) {
+                //         res.redirect('/auth/admin')
+                //     } else {
+                //         res.redirect('/auth/user')
+                //     }
                 }
             })
         }

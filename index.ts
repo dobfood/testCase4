@@ -1,24 +1,27 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import http from 'http';
-import dotenv from 'dotenv'
+const dotenv = require("dotenv");
 import morgan from 'morgan'
-import helmet from 'helmet'
+// import helmet from 'helmet'
 import bodyParser from 'body-parser'
-import {Server} from "socket.io"
+// import {Server} from "socket.io"
 import session from "express-session"
 import cors from "cors"
 import appRoot from "app-root-path";
 import * as path from "path";
+import { router } from './src/routers/router';
 
 const PORT = process.env.PORT || 2212;
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server)
+// const io = new Server(server)
 
 
 app.set('view engine', 'ejs')
 app.set('views', './src/views')
+app.use(express.static('assets'))
+app.use(express.static('src/uploads'))
 
 //db connect 
 dotenv.config()
@@ -33,7 +36,7 @@ app.use(express.static(publicPath));
 //logging request den server
 app.use(morgan("common"))
 //bao ve thong tin server
-app.use(helmet())
+// app.use(helmet())
 
 
 //tranh tan cong  cau hinh body + passport
@@ -54,9 +57,7 @@ app.use((error, req, res, next) => {
 })
 
 
-app.get('/', (req, res) => {
-    res.render('login')
-})
+app.use('/',router)
 
 
 server.listen(PORT, () => {
