@@ -1,5 +1,5 @@
 
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import ProductModel from "../schemas/product.schema";
 
 
@@ -25,6 +25,8 @@ class ProductController {
             if (!product) {
                 let productData = {
                     name: req.body.name,
+                    title : req.body.title,
+                    package : req.body.package,
                     price: req.body.price,
                     description: req.body.description,
                     image: req.file.filename
@@ -79,6 +81,8 @@ class ProductController {
             let product = await ProductModel.findOne({_id : id});
             if (product) {
                 product.name = req.body.name;
+                product.title = req.body.title;
+                product.package = req.body.package;
                 product.price = req.body.price;
                 product.description = req.body.description;
                 product.image = req.file.filename;
@@ -101,6 +105,21 @@ class ProductController {
     //         res.status(200).json(author)
     //     }
     // }
+
+    async pagingSortProducts0(req: Request, res: Response, next: NextFunction) {
+        let page: any = req.params.page || 1;
+        let limit = 10;// số lượng sản phẩm xuất hiện trên 1 page
+        let offset = 0;
+        if (page) {
+            offset = (page - 1) * limit;
+        }
+        let products = await ProductModel.find({price: { $lte : 500000}})
+        let count = await ProductModel.count();
+        let total = count;
+        let totalPages = Math.ceil(total / limit);
+        res.render('sort-product-0', {products: products, current: page, pages: totalPages})
+    }
+
 }
 
 export default new ProductController();

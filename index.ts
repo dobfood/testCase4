@@ -50,14 +50,8 @@ app.use(session({
 }))
 
 // router
-
-app.use((error, req, res, next) => {
-    console.error(error.mesage);
-    res.status(500).end();
-})
-
-
 app.use('/',router)
+
 
 
 server.listen(PORT, () => {
