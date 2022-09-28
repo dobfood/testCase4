@@ -7,6 +7,6 @@ import { userRouter } from "./user.router";
 
 export const router = Router();
 router.use('/admin',productrouter )
-router.use('/',userRouter)
+router.use('/user',userRouter)
 
 
