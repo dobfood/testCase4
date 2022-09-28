@@ -2804,13 +2804,12 @@ h3 {
 
 /* line 80, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_destination.scss */
 .destination_banner_wrap {
-  background-image: url(../img/banner/destination.png);
-  padding: 340px 0;
+  padding: 200px 0;
   background-size: cover;
   background-position: center center;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 200px) {
   /* line 80, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_destination.scss */
   .destination_banner_wrap {
     padding: 150px 0;

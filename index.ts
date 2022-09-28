@@ -5,29 +5,27 @@ import mongoose from 'mongoose';
 import passport from "./src/middleware/passport.google"
 import authRouter from './src/routers/auth.router'
 import startRouter from './src/routers/auth.router'
-
-import appRoot from "app-root-path";
-import cors from "cors";
-import path from "path";
 import errorToSlack from 'express-error-slack'
 import session from "express-session"
-
 import http from 'http';
-
 import morgan from 'morgan'
-import helmet from 'helmet'
-
 import {Server} from "socket.io"
-
+import cors from "cors"
+import appRoot from "app-root-path";
+import * as path from "path";
+import { router } from './src/routers/router';
+import helmet from 'helmet';
 
 const PORT = process.env.PORT || 2212;
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server)
+// const io = new Server(server)
 
 
 app.set('view engine', 'ejs')
 app.set("views", './src/views')
+app.use(express.static('assets'))
+app.use(express.static('src/uploads'))
 
 //db connect 
 dotenv.config()
@@ -41,7 +39,6 @@ app.use(express.static(publicPath));
 
 //logging request den server
 app.use(morgan("common"))
-
 //bao ve thong tin server
 
 app.use(helmet());
@@ -64,7 +61,7 @@ app.use(passport.session());
 
 app.use("/", startRouter);
 app.use("/auth", authRouter);
-
+app.use("", router)
 //neu router loi thi no se vao day
 app.use(errorToSlack({webhookUri: "https://hooks.slack.com/services/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"}))
 app.use((err, req, res, next) => {

@@ -1,4 +1,4 @@
-import mongoose ,{Schema,model} from "mongoose"
+import mongoose from 'mongoose';
 const messenger = new mongoose.Schema({
     nameSend :String,
     nameReceive :String,
