@@ -19,7 +19,7 @@ router.get('/register', wrapperError(authController.register))
 router.post('/register', wrapperError(authController.register))
 
 router.get('/error', wrapperError(authController.error))
-
+router.get('/logout',wrapperError(authController.logout))
 router.get('/google', passport.authenticate('google', {scope: ['profile']}));
 
 router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}),
@@ -29,4 +29,8 @@ router.get('/google/callback', passport.authenticate('google', {failureRedirect:
         res.redirect('/auth/user')
     }
 )
+router.get('/auth/user', (req, res) => {
+    res.render('./users/homeUser')
+})
+
 export default router

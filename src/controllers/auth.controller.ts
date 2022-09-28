@@ -38,7 +38,7 @@ class AuthController {
 
     static async logout(req, res) {
         res.cookie("cookie_user", '')
-        return res.render('/auth/login', {registerSuccess: 'none', wrongPassword: 'none'})
+        return res.render('./login/login', {registerSuccess: 'none', wrongPassword: 'none'})
     }
 
     static async register(req, res) {

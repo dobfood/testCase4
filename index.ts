@@ -64,6 +64,7 @@ app.use(passport.session());
 
 app.use("/", startRouter);
 app.use("/auth", authRouter);
+
 //neu router loi thi no se vao day
 app.use(errorToSlack({webhookUri: "https://hooks.slack.com/services/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"}))
 app.use((err, req, res, next) => {
