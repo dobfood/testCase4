@@ -1,12 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
-interface User {
-    username: string;
-    password: string;
-    admin: boolean;
-    google_id: string;
-
-}
 
 const userSchemas = new mongoose.Schema({
     username: {
@@ -43,7 +36,7 @@ const userSchemas = new mongoose.Schema({
 
         default: 0,
 
-    }
+    },
 
 })
 

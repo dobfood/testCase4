@@ -18,6 +18,7 @@ import morgan from 'morgan'
 import {Server} from "socket.io"
 
 import userRouter from "./src/routers/user.router";
+import helmet from "helmet";
 /*
 import userRouter from "./src/routers/user.router";
 */
@@ -28,8 +29,9 @@ import userRouter from "./src/routers/user.router";
 const PORT = process.env.PORT || 2212;
 const app = express();
 const server = http.createServer(app);
-// const io = new Server(server)
 
+
+const io = new Server(server)
 
 app.set('view engine', 'ejs')
 app.set("views", './src/views')
@@ -65,15 +67,12 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(passport.initialize());
 app.use(passport.session());
-
 // router
-
 app.use("/", startRouter);
 app.use("/auth", authRouter);
 
-app.use("/user",userRouter)
 
-
+app.use("/user", userRouter)
 
 //neu router loi thi no se vao day
 app.use(errorToSlack({webhookUri: "https://hooks.slack.com/services/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"}))
