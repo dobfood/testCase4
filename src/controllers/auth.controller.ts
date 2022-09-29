@@ -15,18 +15,17 @@ class AuthController {
 
                 } else {
 
-                    if (decoded.admin === true) {
+                    // if (decoded.admin === true) {
 
-                        res.redirect('/auth/admin')
+                    //     res.redirect('/auth/admin')
 
-                    } else {
+                    // } else {
 
-                        res.redirect('/auth/user')
+                    //     res.redirect('/auth/user')
 
-                    }
+                    // }
 
                 }
-
             })
 
         }
