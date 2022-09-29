@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
-import passport from "./src/middleware/passport.google"
+// import passport from "./src/middleware/passport.google"
 import authRouter from './src/routers/auth.router'
 import startRouter from './src/routers/auth.router'
 
@@ -56,7 +56,6 @@ app.use(helmet());
 
 //tranh tan cong  cau hinh body + passport
 
-app.use(cors())
 app.use(bodyParser.json())
 app.use(session({
     secret: 'SECRET',
@@ -64,9 +63,16 @@ app.use(session({
     saveUninitialized: true,
     cookie: {secure: true, maxAge: 60 * 60}
 }))
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
+<<<<<<< HEAD
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+=======
 app.use(passport.initialize());
 app.use(passport.session());
+>>>>>>> a8bc18fe708b3c71ac1b2919a793bc875e7fba27
 // router
 app.use("/", startRouter);
 app.use("/auth", authRouter);

@@ -1,13 +1,15 @@
 
 import {Router } from "express";
-import usersController from "../controllers/users.controller";
-import wrapperError from "../containErr/err";
-import UserController from "../controllers/users.controller";
-const userRouter = Router()
-userRouter.get("/:username", wrapperError(UserController.privateUser));
-userRouter.get('/list',usersController.getAll)
-userRouter.get('/sortProDuct/:page', (req , res  ) => {
-    usersController.getDetail(req, res )})
-userRouter.get('/detail/:id',usersController.getDetail)
+import BillOlder from "../controllers/bill.controller"
+import UserController from "src/controllers/user.controller";
 
-export default userRouter
+import { upload } from "./multer";
+
+export const userRouter = Router();
+userRouter.get('/list',UserController.getAll)
+userRouter.get('/detail/:id',UserController.getDetail)
+userRouter.get('/search',UserController.searchByName)
+userRouter.get('/sort',UserController.sortBigCategory)
+userRouter.get('/smallsort',UserController.sortSmallCategory)
+userRouter.get('/bill/:id',BillOlder.showFormbillOlder)
+userRouter.post('/bill/:id',upload,BillOlder.postAddBillOlder)

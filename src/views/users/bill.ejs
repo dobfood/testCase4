@@ -13,37 +13,92 @@
         <%- include('../layout/headers') %>
     </div>
 
-    <div class="destination_banner_wrap overlay" style="background-image: url(../../<%=products.image%>) ;">
-        <!-- <img src="../../<%= products.image%>" alt=""> -->
-        <div class="destination_text text-center">
-            <h3>
-                <%= products.name %>
-            </h3>
-            <p>
-                <%= products.title %>
-            </p>
-        </div>
-    </div>
+
+ 
+<form action="/user/bill/<%= products.id%>" method="post" enctype="multipart/form-data">
 
     <div class="destination_details_info">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-9">
-                    <div class="destination_info">
-                        <h3>Description</h3>
-                        <p>
-                            <%= products.description %>
-                        </p>
-                    </div>
+
                     <div class="bordered_1px"></div>
                     <div class="contact_join">
-                        <h3>Contact for join</h3>
-                        <form action="">
-                                    <a href="/user/bill/<%= products.id%>">
-                                        <div class="submit_btn">
-                                            <button class="boxed-btn4" type="button">Go to order page</button>
-                                        </div>
-                                    </a>
+                        <h3>Book Now</h3>
+                        <form action="#">
+                            <div class="row">
+                              
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                       Code : <input type="text" placeholder="Your Name" id="code" name="code">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                       Name : <input type="text" placeholder="Your Name" id="name" name="name">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                       Sex : <input type="text" placeholder="Sex" id="sex" name="sex">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                       Phone: <input type="text" placeholder="Phone no." id="phone" name="phone">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                      Email:  <input type="text" placeholder="Email" id="email" name="email">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        Number of People:   <input type="text" placeholder="Number of People" id="amountUser" name="amountUser">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        Date Go:   <input type="date" placeholder="Number of People" id="datego" name="datego">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        Date Return:   <input type="date" placeholder="Number of People" id="datereturn" name="datereturn">
+                                    </div>
+                                </div>
+                        <h3>About Tour</h3>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        Name : <input type="text" placeholder="<%= products.name%>" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                      Price :  <input type="text" placeholder="<%= products.price%>" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                    Package :<input type="text" placeholder="<%= products.package%>" disabled>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <div class="submit_btn">
+                                        <button class="boxed-btn4" type="submit">submit</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -53,42 +108,9 @@
         </div>
     </div>
 
-   
+</form>
 
     <!-- newletter_area_start  -->
-    <div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about
-                                    new places to discover.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit">Subscribe</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- newletter_area_end  -->
 
     <div class="popular_places_area">
