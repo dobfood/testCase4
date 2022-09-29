@@ -16,26 +16,52 @@ class UserController {
     async getDetail (req: Request, res : Response) {
         try {
             let product = await ProductModel.findOne({ _id : req.params.id })
-            console.log(product);
             res.render('users/detail', {products : product})
         } catch (error) {
             res.render(error)
         }
     }
 
-    async pagingSortProducts0(req: Request, res: Response , next : NextFunction) {
-        let products = await ProductModel.find({price: { $lte : 500000}})
-        res.render('/user/sort', {products: products})
+    async sortBigCategory(req: Request, res: Response , next : NextFunction) {
+        let product = await ProductModel.find().sort({price: 1})
+        console.log(product);
+        
+        res.render('users/homeUser', {products: product})
+    }
+    async sortSmallCategory(req: Request, res: Response , next : NextFunction) {
+        let product = await ProductModel.find().sort({price: -1})
+        console.log(product);
+        
+        res.render('users/homeUser', {products: product})
     }
 
-    // async detailProDuct(req: Request, res: Response, next: NextFunction) {
-    //     try {
-    //         let product = await ProductModel.findById({_id : req.params.id})
-    //         res.render('user/detailProDuct',{products : product})
-    //     } catch (error) {
-    //         res.status(error).json({error})
-    //     }
+    // async sortBigCategory(req: Request, res: Response , next : NextFunction) {
+    //     let products = await ProductModel.find({price: { $lte : -1}})
+    //     res.render('users/homeUser', {products: products})
     // }
+    // async sortBigCategory(req: Request, res: Response , next : NextFunction) {
+    //     let products = await ProductModel.find({price: { $lte : -1}})
+    //     res.render('users/homeUser', {products: products})
+    // }
+    // async sortBigCategory(req: Request, res: Response , next : NextFunction) {
+    //     let products = await ProductModel.find({price: { $lte : -1}})
+    //     res.render('users/homeUser', {products: products})
+    // }
+    async searchByName (req: Request, res: Response ) {
+    
+        try {
+            let keywordFind = req.query.keyword
+            const products = await ProductModel.find({
+                name :  {$regex: `${keywordFind}`, $options: 'i'},
+
+        
+            });
+            // res.send(products)
+            res.render('users/homeUser', {products : products})
+        } catch (error) {
+            res.render(error);
+        }
+    }
 
 }
 export default new UserController;
