@@ -1,26 +1,44 @@
 
 import mongoose, { Schema, model } from "mongoose";
 import CustomerUser from "./customer.user";
+import ProductModel from "./product.schema";
 
-const BillSchema =  new mongoose.Schema({
+export interface IBill{
+    code : Number;
+    sex : String;
+    name : String;
+    datego : String;
+    datereturn : String;
+    email : String;
+    amountUser : Number;
+    phone : Number;
+    product : any
+}
+
+
+
+const BillSchema =  new Schema<IBill>({
+    code : Number,
     sex : String,
     name : String,
-    date : String,
+    datego : String,
+    datereturn : String,
     email : String,
+    amountUser : Number,
+    // user : {
+    //     type:Schema.Types.ObjectId,
+    //     ref:'user'
+    // },
     phone : {
         type:Number,
         default:0,
         required:true
     },
     product : {
-        type:Schema.Types.ObjectId,
+        type :Schema.Types.ObjectId,
         ref:'Product'
-    },
-    customer : {
-        type:Schema.Types.ObjectId,
-        ref:'customer'
     },
 
 })
-const bill = mongoose.model('bill',BillSchema )
-export default bill
+const BillModel = mongoose.model('bills',BillSchema )
+export default BillModel ;

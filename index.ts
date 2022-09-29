@@ -59,8 +59,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // router
 
-app.use("/", startRouter);
-app.use("/auth", authRouter);
+// app.use("/", startRouter);
+// app.use("/auth", authRouter);
 app.use("", router)
 //neu router loi thi no se vao day
 app.use(errorToSlack({webhookUri: "https://hooks.slack.com/services/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"}))
