@@ -14,27 +14,24 @@ class BillOlder {
         }
     }
 
-    async postAddBillOlder (req : Request, res: Response) {
+    async postAddBillOlder (req : any, res: Response) {
         try { 
-            const product = await ProductModel.find({_id : req.params.id})
-            const bill = await Bill.findOne({ _id : req.params.id });
-            console.log(bill);
-
-            if(!bill) {
-                let productData = {
+            const product = await ProductModel.findOne({_id : req.params.id})
+                let billData = {
+                    code : req.body.code,
                     name: req.body.name,
                     sex : req.body.sex,
                     phone : req.body.phone,
                     email: req.body.email,
+                    datego : req.body.datego,
+                    datereturn : req.body.datereturn,
                     amountUser: req.body.amountUser,
-                    product : product[0]
+                    product : product
                 }
-                const bill = new Bill(productData);
+                const bill = new Bill(billData);
                 await bill.save();
-                res.redirect('users/homeUser')
-            } else {
-                console.log('loi')
-            }
+                res.redirect('/users/success')
+           
         } catch (error) {
             res.render(error)
         }

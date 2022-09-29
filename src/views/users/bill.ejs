@@ -15,7 +15,7 @@
 
 
  
-<form action="/user/bill" method="post" enctype="multipart/form-data">
+<form action="/user/bill/<%= products.id%>" method="post" enctype="multipart/form-data">
 
     <div class="destination_details_info">
         <div class="container">
@@ -28,6 +28,12 @@
                         <form action="#">
                             <div class="row">
                               
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                       Code : <input type="text" placeholder="Your Name" id="code" name="code">
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-6 col-md-6">
                                     <div class="single_input">
                                        Name : <input type="text" placeholder="Your Name" id="name" name="name">
@@ -48,7 +54,7 @@
 
                                 <div class="col-lg-6 col-md-6">
                                     <div class="single_input">
-                                      Email:  <input type="text" placeholder="Email" id="email" name="name">
+                                      Email:  <input type="text" placeholder="Email" id="email" name="email">
                                     </div>
                                 </div>
 
@@ -58,6 +64,17 @@
                                     </div>
                                 </div>
 
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        Date Go:   <input type="date" placeholder="Number of People" id="datego" name="datego">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        Date Return:   <input type="date" placeholder="Number of People" id="datereturn" name="datereturn">
+                                    </div>
+                                </div>
                         <h3>About Tour</h3>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="single_input">

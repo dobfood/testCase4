@@ -34,19 +34,6 @@ class UserController {
         
         res.render('users/homeUser', {products: product})
     }
-
-    // async sortBigCategory(req: Request, res: Response , next : NextFunction) {
-    //     let products = await ProductModel.find({price: { $lte : -1}})
-    //     res.render('users/homeUser', {products: products})
-    // }
-    // async sortBigCategory(req: Request, res: Response , next : NextFunction) {
-    //     let products = await ProductModel.find({price: { $lte : -1}})
-    //     res.render('users/homeUser', {products: products})
-    // }
-    // async sortBigCategory(req: Request, res: Response , next : NextFunction) {
-    //     let products = await ProductModel.find({price: { $lte : -1}})
-    //     res.render('users/homeUser', {products: products})
-    // }
     async searchByName (req: Request, res: Response ) {
     
         try {
