@@ -4,7 +4,6 @@ import User from '../schemas/user.model'
 class UserController {
     static async homeUser(req, res) {
         let data = await req.headers.cookie
-        console.log(data)
         if (data) {
             let accessToken = data.split("=")[1]
             jwt.verify(accessToken, process.env.NUMBER_SECRET_TOKEN, async (err, decoded) => {
