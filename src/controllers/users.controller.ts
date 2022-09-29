@@ -1,4 +1,5 @@
 
+
 import { NextFunction, Request, Response } from "express";
 import ProductModel from "../schemas/product.schema";
 
@@ -36,6 +37,7 @@ class UserController {
     //         res.status(error).json({error})
     //     }
     // }
-
+  
 }
 export default new UserController;
+

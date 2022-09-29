@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-
+import UserController from "../controllers/users.controller";
 const router = express.Router();
 import wrapperError from '../containErr/err'
 
@@ -11,11 +11,10 @@ import checkLogin from "../middleware/check.login";
 import authController from "../controllers/auth.controller";
 
 router.get('/', wrapperError(AuthController.login))
-
 router.post('/login', wrapperError(checkLogin.checkUserOrAdminRouter))
-
+router.get('/user', wrapperError(UserController.homeUser))
+router.get('/admin', wrapperError(UserController.homeAdmin))
 router.get('/register', wrapperError(authController.register))
-
 router.post('/register', wrapperError(authController.register))
 
 router.get('/error', wrapperError(authController.error))
@@ -29,8 +28,7 @@ router.get('/google/callback', passport.authenticate('google', {failureRedirect:
         res.redirect('/auth/user')
     }
 )
-router.get('/auth/user', (req, res) => {
-    res.render('./users/homeUser')
-})
+
+
 
 export default router

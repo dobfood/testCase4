@@ -29,9 +29,9 @@ class checkLogin {
             await AuthController.createTokenAndSetCookie(req, res, payload)
 
             if (user.admin === true) {
-                res.redirect("auth/admin")
+                res.redirect("/auth/admin")
             } else {
-                res.redirect("auth/user")
+                res.redirect("/auth/user")
             }
         } else {
             return res.json({error: "wrong User"})
