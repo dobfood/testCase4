@@ -5,7 +5,6 @@ const router = express.Router();
 import wrapperError from '../containErr/err'
 
 import AuthController from "../controllers/auth.controller";
-
 import checkLogin from "../middleware/check.login";
 
 import authController from "../controllers/auth.controller";
@@ -19,7 +18,9 @@ router.get('/register', wrapperError(authController.register))
 router.post('/register', wrapperError(authController.register))
 
 router.get('/error', wrapperError(authController.error))
+
 router.get('/logout',wrapperError(authController.logout))
+
 router.get('/google', passport.authenticate('google', {scope: ['profile']}));
 
 router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}),
