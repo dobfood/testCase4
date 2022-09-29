@@ -1,6 +1,7 @@
 
 
 import { NextFunction, Request, Response } from "express";
+// @ts-ignore
 import ProductModel from "../schemas/product.schema";
 
 
